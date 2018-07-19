@@ -21,6 +21,15 @@ function setCookie(name,value,time) {
 	ext.getTime(ext.setTime()+strsec*1);
 	document.cookie = name + '=' + value +'; expires='+ ext.toGMTString();
  };
+ 
+ /*设置cookie 参数为小时*/
+var setCookieHours = function(c_name, value, expiredays){
+  //写cookies
+  var exdate=new Date();
+  // 北京时间和格林尼治时间相差8小时，所以在需要的小时基础上＋8
+  exdate.setHours(exdate.getHours() + expiredays + 8);
+  document.cookie=c_name+ "=" + escape(value) + ((expiredays==null) ? "" : ";expires="+exdate.toGMTString()) + ";path=/;domain=aldwx.com";
+}
 
 // delcookie
 function delCookie(name) {
